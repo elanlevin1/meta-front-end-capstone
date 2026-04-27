@@ -1,0 +1,90 @@
+.main {
+    display: flex;
+    flex-direction: column;
+}
+
+.main div {
+  padding: 1rem 0;
+}
+
+.main button {
+  background-color: #F4CE14;
+  color: black;
+  border-radius: 16px;
+  padding: 1em;
+  max-width: fit-content;
+  max-height: fit-content;
+}
+
+/* Hero Section */
+.hero-section {
+  background-color: #495E57;
+  color: white;
+  display: inline-flex;
+}
+
+.hero-section div {
+    flex: 1;
+}
+
+.hero-section h1 {
+  color: #F4CE14;
+}
+
+.welcome-food {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image {
+    max-width: 30%;
+    min-width: 200px;
+    height: auto;
+}
+
+.highlights {
+    display: grid;
+    /* grid-row: auto auto;
+    grid-column: auto auto auto; */
+    /* grid-template-rows: 0fr; */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    /* align-items: center; */
+}
+
+.highlights h1 {
+    grid-column: 1 / span 2;
+}
+
+.menu-card {
+    /* flex-direction: column; */
+    background-color: #EDEFEE;
+    margin: 1rem;
+}
+
+/* Testimonials */
+.testimonials {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    background-color: #D9D9D9;
+}
+
+.testimonial {
+    background-color: white;
+    margin: 1rem;
+}
+
+.testimonials h1 {
+    grid-column: 1 / span 4;
+}
+
+/* About */
+.about {
+    background-color: #495E57;
+    color: white;
+    display: inline-flex;
+}
+
+.about div {
+    flex: 1;
+}

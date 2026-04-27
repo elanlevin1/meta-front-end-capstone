@@ -1,17 +1,23 @@
 import './App.css';
-import Header from './Header';
-import Nav from './Nav';
-import Main from './Main';
-import Footer from './Footer';
+import Header from './Header/Header';
+import Nav from './Nav/Nav';
+import Main from './Main/Main';
+import Footer from './Footer/Footer';
 
 function App() {
   return (
-    <>
-      <Header />
-      <Nav />
-      <Main />
-      <Footer />
-    </>
+    <div className="App">
+      <div className='flex-grid'>
+        <Header />
+        <Nav />
+      </div>
+      <div className='flex-grid'>
+        <Main />
+      </div>
+      <div className='flex-grid'>
+        <Footer />
+      </div>
+    </div>
   );
 }
 
