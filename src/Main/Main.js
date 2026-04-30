@@ -1,49 +1,53 @@
 import './Main.css'
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
+
 
 const Main = () =>  {
+    const navigate = useNavigate();
+
     return  (
         <main className="main">
-            <div className="hero-section">
+            <section className="hero-section">
                 <div className="text">
                     <h1>Little Lemon</h1>
                     <h2>Chicago</h2>
                     <h3>We are a family owned Mediterranean restaurant,
                         focused on traditional recipes served with a modern twist.
                     </h3>
-                    <button>Reserve a table</button>
+                    <button onClick={() => navigate('/booking')}>Reserve a table</button>
                 </div>
                 <div className="welcome-food">
                     <img className="image" src="./assets/restaurant-food.jpg" alt="Restaurant hors d'oeuvre"/>
                 </div>
-            </div>
+            </section>
 
-            <div className="highlights">
+            <section className="highlights">
                 {/* <div> */}
                     <h1>This week's specials!</h1>
                     <button>Online Menu</button>
                 {/* </div> */}
                 {/* <div> */}
                     {food.map(item => (
-                        <MenuCard
+                        <Specials
                             key={item.id}
                             {...item}
                         />
                     ))}
                 {/* </div> */}
-            </div>
+            </section>
 
-            <div className="testimonials">
+            <section className="testimonials">
                 <h1>Testimonials</h1>
                 {reviews.map(item => (
-                        <Testimonial
+                        <CustomersSay
                             key={item.id}
                             {...item}
                         />
                     ))}
-            </div>
+            </section>
 
-            <div className="about">
+            <section className="about">
                 <div>
                     <h1>Little Lemon</h1>
                     <h2>Chicago</h2>
@@ -52,12 +56,12 @@ const Main = () =>  {
                 <div>
                     <img className="image" src="./assets/Mario-and-Adrian-B.jpg" alt="Restaurant owners Mario and Adrian"/>
                 </div>
-            </div>
+            </section>
         </main>
     )
 }
 
-const MenuCard = ({imgSrc, food, price, description}) => {
+const Specials = ({imgSrc, food, price, description}) => {
     return (
         <div className='menu-card'>
             <img className="image" src={imgSrc} alt={food}/>
@@ -78,7 +82,7 @@ const food = [
         description: "This comes straight from grandma’s recipe book, every last ingredient has been sourced and is as authentic as can be imagined."}
 ]
 
-const Testimonial = ({imgSrc, name, reviewText}) => {
+const CustomersSay = ({imgSrc, name, reviewText}) => {
     return (
         <div className='testimonial'>
             <h4>Rating</h4>

@@ -1,22 +1,17 @@
 import './App.css';
-import Header from './Header/Header';
-import Nav from './Nav/Nav';
-import Main from './Main/Main';
-import Footer from './Footer/Footer';
+import HomePage from './HomePage';
+import BookingPage from './Booking/BookingPage';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <div className='flex-grid'>
-        <Header />
-        <Nav />
-      </div>
-      <div className='flex-grid'>
-        <Main />
-      </div>
-      <div className='flex-grid'>
-        <Footer />
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />}></Route>
+          <Route path="/booking" element={<BookingPage />}></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

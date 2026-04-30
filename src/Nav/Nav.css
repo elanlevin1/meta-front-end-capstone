@@ -23,3 +23,8 @@
   background-color: #495E57;
   color: white;
 }
+
+.logo {
+    max-width: 100%;
+    height: 50%;
+}
