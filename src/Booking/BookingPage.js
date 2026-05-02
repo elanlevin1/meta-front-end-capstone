@@ -1,34 +1,31 @@
-import React, { useState, useReducer } from 'react';
+import React, { useReducer } from 'react';
+import { useNavigate } from 'react-router-dom';
 import BookingForm from './BookingForm';
+import { fetchAPI, submitAPI } from './api';
 
 export const updateTimes = (state, action) => {
     switch (action.type) {
-        case "UPDATE_TIMES":
-            // For now, just return the same times regardless of date
-            // Later, you can update this to fetch or calculate times based on action.date
-            return initializeTimes();
+        case "update":
+            return fetchAPI(action.date);
         default:
             return state;
     }
 }
 
-export const initializeTimes = () => {
-        return (
-            ["17:00",
-            "18:00",
-            "19:00",
-            "20:00",
-            "21:00",
-            "22:00"]
-        )
-    }
+export const initializeTimes = (date) => {
+    return fetchAPI(date);
+}
 
 const BookingPage = () => {
-    const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
+    const [availableTimes, dispatch] = useReducer(updateTimes, new Date(), initializeTimes);
 
-    // const updateTimes = (state, action) => {
-    //     return availableTimes;
-    // }
+    const navigate = useNavigate();
+
+    const submitForm = (formData) => {
+        if (submitAPI(formData)) {
+            navigate('/booking-confirmation');
+        }
+    }
 
     return (
         <div>
@@ -36,6 +33,7 @@ const BookingPage = () => {
             <BookingForm
                 availableTimes={availableTimes}
                 dispatch={dispatch}
+                submitForm={submitForm}
             />
 
         </div>

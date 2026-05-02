@@ -1,17 +1,30 @@
 import React, { useState } from 'react';
 import BookingSlot from './BookingSlot'
 
-const BookingForm = ({availableTimes, dispatch}) => {
+const BookingForm = ({availableTimes, dispatch, submitForm}) => {
     const [date, setDate] = useState("");
     const [time, setTime] = useState("");
     const [guests, setGuests] = useState("");
     const [occasion, setOccasion] = useState("");
 
+    const dateChange = e => {
+        const selectedDateString = e.target.value;
+        const selectedDate = new Date(selectedDateString);
+        setDate(selectedDateString);
+        dispatch({ type: 'update', date: selectedDate });
+    }
+
+    const formData = {
+        date: date,
+        time: time,
+        guests: guests,
+        occasion: occasion
+    };
+    console.log(availableTimes);
     return (
-        // style="display: grid; max-width: 200px; gap: 20px"
-        <form>
+        <form style={{display: "grid", maxWidth: "200px", gap: "20px", margin: "2rem"}}>
             <label htmlFor="res-date">Choose date</label>
-            <input type="date" id="res-date" value={date} onChange={(e) => setDate(e.target.value)}/>
+            <input type="date" id="res-date" value={date} onChange={dateChange}/>
             <label htmlFor="res-time">Choose time</label>
             <select id="res-time" value={time} onChange={(e) => setTime(e.target.value)}>
                 {availableTimes.map((time) => (
@@ -20,7 +33,6 @@ const BookingForm = ({availableTimes, dispatch}) => {
                     // </option>
                     <BookingSlot key={time} time={time}/>
                 ))}
-                {/* {dispatch({ type: "UPDATE_TIMES", date: date })} <-- causing issues*/}
             </select>
             <label htmlFor="guests">Number of guests</label>
             <input type="number" placeholder="1" min="1" max="10" id="guests" value={guests} onChange={(e) => setGuests(e.target.value)}/>
@@ -29,7 +41,7 @@ const BookingForm = ({availableTimes, dispatch}) => {
                 <option>Birthday</option>
                 <option>Anniversary</option>
             </select>
-            <input type="submit" value="Make Your reservation"/>
+            <input type="submit" value="Make Your reservation" onClick={() => submitForm(formData)}/>
         </form>
     )
 }
