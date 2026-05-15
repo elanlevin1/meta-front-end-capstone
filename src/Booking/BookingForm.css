@@ -1,0 +1,109 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #495E57;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 1.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 16px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; /* Box shadow from https://getcssscan.com/css-box-shadow-examples */
+  background-color: white;
+  width: 100%;
+  max-width: 450px;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-bottom: 24px;
+}
+
+label, legend {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+input, select {
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1.5px solid gray;
+  height: 40px;
+  padding: 0 12px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+input:hover, input:focus, select:hover, select:focus {
+  border-color: #495E57;
+  box-shadow: 0 0 0 2px rgba(73, 94, 87, 0.2);
+  outline: none;
+}
+
+select:invalid {
+  color: #757575;
+}
+
+input[type="date"] {
+  font-family: inherit;
+}
+
+input[type="radio"] {
+  height: auto;
+  margin: 0;
+  width: 18px;
+  accent-color: #495E57;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 20px;
+}
+
+.error {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  bottom: 0;
+  font-size: 14px;
+  color: #D32F2F;
+}
+
+button {
+  background-color: #495E57;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px rgba(73, 94, 87, 0.2);
+}
+
+.button-active:hover {
+  background-color: #F4CE14;
+  color: #495E57;
+}
+
+.button-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background-color: #cccccc;
+  color: #545454;
+  box-shadow: none;
+}

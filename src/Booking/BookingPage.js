@@ -2,6 +2,7 @@ import React, { useReducer } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BookingForm from './BookingForm';
 import { fetchAPI, submitAPI } from './api';
+import Nav from '../Nav/Nav';
 
 export const updateTimes = (state, action) => {
     switch (action.type) {
@@ -23,19 +24,23 @@ const BookingPage = () => {
 
     const submitForm = (formData) => {
         if (submitAPI(formData)) {
-            navigate('/booking-confirmation');
+            navigate('/booking-confirmation', { state: formData });
         }
     }
 
     return (
-        <div>
-            <h1>Reserve a Table</h1>
-            <BookingForm
-                availableTimes={availableTimes}
-                dispatch={dispatch}
-                submitForm={submitForm}
-            />
-
+        <div style={{backgroundColor: '#495E57'}}>
+            <section className='flex-grid' style={{backgroundColor: 'white'}}>
+                <Nav />
+            </section>
+            <section>
+                <h1 style={{color: '#F4CE14'}}>Reserve a Table</h1>
+                <BookingForm
+                    availableTimes={availableTimes}
+                    dispatch={dispatch}
+                    submitForm={submitForm}
+                />
+            </section>
         </div>
     )
 }
